@@ -1,47 +1,45 @@
-export async function obtenerObras(limit = 12, offset = 0) {
+export async function obtenerObras(limit = 24, offset = 0) {
     const API_URL = "https://data.artblocks.io/v1/graphql";
 
-const consulta = `{
-    tokens_metadata(
-        where: {
-            chain_id: {_eq: 1}
-            project_id: {
-                _in: [
-                    "0x99a9b7c1116f9ceeb1652de04d5969cce509b069-385",
-                    "0x99a9b7c1116f9ceeb1652de04d5969cce509b069-466"
-                ]
+    const consulta = `{
+        tokens_metadata(
+            where: {
+                chain_id: {_eq: 1}
+                project: {
+                    is_artblocks: {_eq: true}
+                }
+                media_url: {_is_null: false}
+                live_view_url: {_is_null: false}
+            }
+            limit: ${limit}
+            offset: ${offset}
+            order_by: [{invocation: asc}, {id: asc}]
+        ) {
+            id
+            media_url
+            live_view_url
+            invocation
+            project {
+                name
+                artist_name
             }
         }
-        limit: ${limit}
-        offset: ${offset}
-        order_by: {token_id: asc}
-    ) {
-        token_id
-        media_url
-        live_view_url
-        invocation
-        project {
-            name
-            artist_name
-        }
-    }
 
-    tokens_metadata_aggregate(
-        where: {
-            chain_id: {_eq: 1}
-            project_id: {
-                _in: [
-                    "0x99a9b7c1116f9ceeb1652de04d5969cce509b069-385",
-                    "0x99a9b7c1116f9ceeb1652de04d5969cce509b069-466"
-                ]
+        tokens_metadata_aggregate(
+            where: {
+                chain_id: {_eq: 1}
+                project: {
+                    is_artblocks: {_eq: true}
+                }
+                media_url: {_is_null: false}
+                live_view_url: {_is_null: false}
+            }
+        ) {
+            aggregate {
+                count
             }
         }
-    ) {
-        aggregate {
-            count
-        }
-    }
-}`;
+    }`;
 
     const respuesta = await fetch(API_URL, {
         method: "POST",
@@ -63,7 +61,7 @@ const consulta = `{
 
     const obras = resultado.data.tokens_metadata.map(function (dato) {
         return {
-            id: dato.token_id,
+            id: dato.id,
             name: `${dato.project.name} #${dato.invocation}`,
             artist: dato.project.artist_name,
             image: dato.media_url,
@@ -72,7 +70,7 @@ const consulta = `{
     });
 
     return {
-    obras: obras,
-    total: resultado.data.tokens_metadata_aggregate.aggregate.count
-};
+        obras: obras,
+        total: resultado.data.tokens_metadata_aggregate.aggregate.count
+    };
 }

@@ -2,7 +2,7 @@ import { obtenerObras } from "./api.js";
 import { mostrarObra } from "./obras.js";
 
 let pagina = 1;
-const cantidad = 12;
+const cantidad = 24;
 
 function calcularOffset(pagina, cantidad) {
     return (pagina - 1) * cantidad;
