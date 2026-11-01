@@ -190,3 +190,12 @@ nav a:hover {
     }
 
 }
+
+#anterior:disabled,
+#siguiente:disabled {
+    background-color: var(--color-fondo);
+    color: var(--color-gris);
+    border: 1px solid var(--color-gris);
+    opacity: 1;
+    cursor: not-allowed;
+}
