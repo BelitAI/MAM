@@ -1,0 +1,192 @@
+/* Guía de estilo */
+
+:root {
+
+    /* Colores principales */
+
+    --color-fondo: #080808;
+    --color-superficie: #1A1A1A;
+    --color-texto: #F5F5F5;
+
+    /* COLORES DE ACENTO */
+
+    --color-acento: #E8FF00;
+    --color-magenta: #FF007F;
+
+    /* COLORES SECUNDARIOS */
+
+    --color-gris: #909090;
+
+}
+
+/* Estilos generales */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Cabecera y navegación */
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    border-bottom: 1px solid var(--color-superficie);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav a:hover {
+    color: var(--color-acento);
+}
+
+/* Portada*/
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 48px 24px;
+    overflow: hidden;
+}
+
+.hero-contenido {
+    width: 100%;
+}
+
+.hero-etiqueta {
+    color: var(--color-acento);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.hero-titulo {
+    font-size: clamp(100px, 25vw, 350px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.08em;
+    margin: 32px 0;
+}
+
+/* Contenedor para el arte generativo */
+
+.hero-arte {
+    width: 100%;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Canvas de p5.js */
+
+.hero-arte canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.hero-subtitulo {
+    font-size: clamp(32px, 5vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 32px;
+}
+
+.hero-frase {
+    font-size: 16px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.hero-boton {
+    display: inline-block;
+    padding: 18px 28px;
+    color: var(--color-acento);
+    border: 1px solid var(--color-acento);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.hero-boton:hover {
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+}
+
+/* Galería de obras*/
+
+#galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Tarjetas de las obras */
+
+.tarjeta-obra {
+    width: 100%;
+}
+
+/* Imágenes */
+
+.tarjeta-obra img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Pantallas grandes */
+
+@media (min-width: 768px) {
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 48px;
+    }
+
+    #galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero {
+        padding: 80px 5%;
+    }
+
+    .hero-contenido {
+        max-width: 1400px;
+    }
+
+}
