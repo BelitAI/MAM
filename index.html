@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MAM | Museo de Arte Mutable</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" type="module" defer></script>
+
+    <!-- Biblioteca p5.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js" defer></script>
+
+    <!-- Composición generativa de MAM -->
+    <script src="./js/sketch_mam.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>MAM</h1>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#explorar">Explorar</a>
+            <a href="#coleccion">Mi colección</a>
+            <a href="#estudio">Estudio creativo</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- PORTADA DEL MUSEO -->
+
+        <section id="inicio" class="hero">
+
+            <div class="hero-contenido">
+
+                <p class="hero-etiqueta">Museo experimental de arte generativo</p>
+
+                <h2 class="hero-titulo">MAM</h2>
+
+                <!-- Contenedor para la composición de arte generativo -->
+                <div id="arte-generativo" class="hero-arte"></div>
+
+                <h3 class="hero-subtitulo">
+                    MUSEO DE ARTE<br>
+                    MUTABLE
+                </h3>
+
+                <p class="hero-frase">
+                    El arte no se contempla.<br>
+                    Se transforma.
+                </p>
+
+                <a href="#explorar" class="hero-boton">
+                    EXPLORAR EL MUSEO ↗
+                </a>
+
+            </div>
+
+        </section>
+
+        <section id="explorar">
+            <h2>Explora el museo</h2>
+            <div id="galeria"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>® MAM — Museo de Arte Mutable · 2026</p>
+    </footer>
+
+</body>
+
+</html>
