@@ -2,7 +2,9 @@ import { obtenerObras } from "./api.js";
 import { mostrarObra } from "./obras.js";
 
 let pagina = 1;
-const cantidad = 24;
+const cantidad = 12;
+let totalObras = 0;
+let artistaBuscado = "";
 
 function calcularOffset(pagina, cantidad) {
     return (pagina - 1) * cantidad;
@@ -10,10 +12,13 @@ function calcularOffset(pagina, cantidad) {
 
 async function cargarPagina(pagina, cantidad) {
     const offset = calcularOffset(pagina, cantidad);
-    const resultado = await obtenerObras(cantidad, offset);
+    const resultado = await obtenerObras(cantidad, offset, artistaBuscado);
     const obras = resultado.obras;
+    if (resultado.total !== null) {
+        totalObras = resultado.total;
+    }
 
-    console.log("Total de obras:", resultado.total);
+    const totalPaginas = Math.ceil(totalObras / cantidad);
 
     const galeria = document.getElementById("galeria");
     galeria.innerHTML = "";
@@ -22,7 +27,6 @@ async function cargarPagina(pagina, cantidad) {
         mostrarObra(obra);
     });
     botonAnterior.disabled = pagina === 1;
-    const totalPaginas = Math.ceil(resultado.total / cantidad);
     botonSiguiente.disabled = pagina >= totalPaginas;
 }
 
@@ -39,6 +43,17 @@ botonAnterior.addEventListener("click", function () {
         pagina--;
         cargarPagina(pagina, cantidad);
     }
+});
+const formulario = document.getElementById("formulario-filtros");
+
+formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const datos = new FormData(formulario);
+    artistaBuscado = datos.get("artista").trim();
+    pagina = 1;
+
+    cargarPagina(pagina, cantidad);
 });
 
 cargarPagina(pagina, cantidad);

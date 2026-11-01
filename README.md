@@ -34,3 +34,4 @@ Proyecto en desarrollo.
 - Botones Anterior y Siguiente con control de los límites.
 - Enlaces para abrir las obras generativas.
 - Composición propia con p5.js en la portada.
+- Búsqueda por artista, manteniendo la paginación de los resultados.
