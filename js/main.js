@@ -1,9 +1,12 @@
-import { obtenerObra } from "./api.js";
+import { obtenerObras } from "./api.js";
 import { mostrarObra } from "./obras.js";
 
 async function init() {
-    const obra = await obtenerObra();
-    mostrarObra(obra);
+    const obras = await obtenerObras();
+
+    obras.forEach(function (obra) {
+        mostrarObra(obra);
+    });
 }
 
 init();
