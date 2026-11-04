@@ -21,6 +21,7 @@ un sketch de p5.js como parte de su identidad visual.
 - `js/obras.js`
 - `js/favoritos.js`
 - `js/sketch_mam.js`
+- `js/localStorage.js`
 
 ## Estado
 
@@ -35,3 +36,12 @@ Proyecto en desarrollo.
 - Enlaces para abrir las obras generativas.
 - Composición propia con p5.js en la portada.
 - Búsqueda por artista, manteniendo la paginación de los resultados.
+- Guardado y eliminación de obras favoritas mediante localStorage.
+- Iconos que muestran si una obra está guardada al cargar la galería.
+- Portada con una obra generativa de Art Blocks integrada.
+- Letras MAM realizadas con p5.js, con ondulación e interacción con el ratón.
+
+### Funcionalidades pendientes
+
+- Visualización de favoritos en «Mi colección».
+- Búsqueda por colección.

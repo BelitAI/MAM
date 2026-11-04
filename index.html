@@ -15,6 +15,7 @@
 
     <!-- Composición generativa de MAM -->
     <script src="./js/sketch_mam.js" defer></script>
+
 </head>
 
 <body>
@@ -39,10 +40,22 @@
 
                 <p class="hero-etiqueta">Museo experimental de arte generativo</p>
 
-                <h2 class="hero-titulo">MAM</h2>
+                <!-- Composición visual de la portada -->
+                <div class="portada-visual">
 
-                <!-- Contenedor para la composición de arte generativo -->
-                <div id="arte-generativo" class="hero-arte"></div>
+                    <!-- Animación MAM realizada con p5.js -->
+                    <div id="arte-generativo" class="hero-arte"></div>
+
+                    <!-- Obra generativa de Art Blocks -->
+                    <div class="obra-portada">
+                        <iframe
+                            src="https://generator.artblocks.io/1/0x99a9b7c1116f9ceeb1652de04d5969cce509b069/424000000"
+                            title="Obra generativa de Art Blocks" loading="lazy">
+                        </iframe>
+                    </div>
+
+                </div>
+
 
                 <h3 class="hero-subtitulo">
                     MUSEO DE ARTE<br>
@@ -55,7 +68,7 @@
                 </p>
 
                 <a href="#explorar" class="hero-boton">
-                    EXPLORAR EL MUSEO ↗
+                    EXPLORAR EL MUSEO
                 </a>
 
             </div>
@@ -68,6 +81,10 @@
                 <label for="artista">Artista</label>
 
                 <input type="search" id="artista" name="artista" placeholder="Nombre del artista">
+
+                <label for="coleccion">Colección</label>
+
+                <input type="search" id="coleccion" name="coleccion" placeholder="Nombre de la colección">
 
                 <button type="submit">Buscar</button>
             </form>
