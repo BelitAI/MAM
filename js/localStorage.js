@@ -1,7 +1,14 @@
-// Recupero las obras que tengo guardadas en favoritos.
+import { Obra } from "../clases/Obra.js";
+import { Coleccion } from "../clases/Coleccion.js";
+
+//Recupero los datos guardados y reconstruyo los objetos Obra.
 export function getFavoritesFromLocalStorage() {
     const favoritosGuardados = localStorage.getItem("favoritosMAM") || "[]";
-    const favoritos = JSON.parse(favoritosGuardados);
+    const datos = JSON.parse(favoritosGuardados);
+
+    const favoritos = datos.map(function (dato) {
+        return new Obra(dato);
+    });
 
     return favoritos;
 }
@@ -11,35 +18,31 @@ function saveFavoritesToLocalStorage(favoritos) {
     localStorage.setItem("favoritosMAM", JSON.stringify(favoritos));
 }
 
-// Compruebo si una obra ya está en favoritos.
+// Compruebo si una obra pertenece a la colección de favoritos.
 export function isInFavorites(obra) {
-    const favoritos = getFavoritesFromLocalStorage();
+    const coleccion = new Coleccion();
 
-    const encontrada = favoritos.find(function (favorito) {
-        return favorito.id === obra.id;
-    });
+    coleccion.obras = getFavoritesFromLocalStorage();
 
-    return encontrada !== undefined;
+    return coleccion.contieneObra(obra);
 }
 
-// Añado o elimino una obra de favoritos.
+// Añado o elimino la obra utilizando la colección.
 export function toggleFavorite(obra) {
-    const favoritos = getFavoritesFromLocalStorage();
+    const coleccion = new Coleccion();
 
-    const indice = favoritos.findIndex(function (favorito) {
-        return favorito.id === obra.id;
-    });
+    coleccion.obras = getFavoritesFromLocalStorage();
 
     let esFavorito = false;
 
-    if (indice === -1) {
-        favoritos.push(obra);
-        esFavorito = true;
+    if (coleccion.contieneObra(obra)) {
+        coleccion.quitarObra(obra);
     } else {
-        favoritos.splice(indice, 1);
+        coleccion.agregarObra(obra);
+        esFavorito = true;
     }
 
-    saveFavoritesToLocalStorage(favoritos);
+    saveFavoritesToLocalStorage(coleccion.obras);
 
     return esFavorito;
 }

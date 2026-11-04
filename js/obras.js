@@ -1,6 +1,6 @@
 import { isInFavorites, toggleFavorite } from "./localStorage.js";
 
-export function mostrarObra(obra) {
+export function mostrarObra(obra, alCambiarFavorito = function () { }) {
 
     const galeria = document.getElementById("galeria");
 
@@ -9,7 +9,7 @@ export function mostrarObra(obra) {
 
     const imagen = document.createElement("img");
     imagen.src = obra.image;
-    imagen.alt = obra.name;
+    imagen.alt = obra.obtenerDescripcion();
 
     const titulo = document.createElement("h3");
     titulo.textContent = obra.name;
@@ -57,6 +57,8 @@ export function mostrarObra(obra) {
             botonFavorito.setAttribute("aria-label", "Añadir a favoritos");
         }
 
+        alCambiarFavorito(obra, esFavorito);
+
     });
 
     botonFavorito.appendChild(iconoFavorito);
@@ -68,4 +70,5 @@ export function mostrarObra(obra) {
     tarjeta.appendChild(botonFavorito);
 
     galeria.appendChild(tarjeta);
+    return tarjeta;
 }

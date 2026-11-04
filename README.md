@@ -22,6 +22,9 @@ un sketch de p5.js como parte de su identidad visual.
 - `js/favoritos.js`
 - `js/sketch_mam.js`
 - `js/localStorage.js`
+- `clases/Obra.js`
+- `clases/Coleccion.js`
+- `favorites.html`
 
 ## Estado
 
@@ -40,8 +43,12 @@ Proyecto en desarrollo.
 - Iconos que muestran si una obra está guardada al cargar la galería.
 - Portada con una obra generativa de Art Blocks integrada.
 - Letras MAM realizadas con p5.js, con ondulación e interacción con el ratón.
+- Clase Obra para representar las piezas y obtener su descripción.
+- Clase Coleccion para gestionar obras sin duplicados mediante composición.
+- Reconstrucción de los objetos Obra al recuperar favoritos de localStorage.
+- Página "Mi colección" para consultar las obras favoritas.
+- Eliminación de favoritos con actualización inmediata de las tarjetas.
 
 ### Funcionalidades pendientes
 
-- Visualización de favoritos en «Mi colección».
 - Búsqueda por colección.
