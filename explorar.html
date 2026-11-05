@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explorar el museo | MAM</title>
+    <link rel="icon" type="image/png" href="./assets/img/logo_favicon.png">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/loader.css">
+    <link rel="stylesheet" href="./css/galeria.css">
+    <script src="./js/main.js" type="module"></script>
+</head>
+
+<body>
+    <header>
+        <a href="./index.html">
+            <img class="logo" src="./assets/img/logo_favicon.png" alt="MAM — Museo de Arte Mutable">
+        </a>
+
+        <nav>
+            <a href="./index.html#inicio">Inicio</a>
+            <a href="./explorar.html">Explorar</a>
+            <a href="./favorites.html">Mi colección</a>
+            <a href="./estudio.html">Estudio creativo</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="explorar">
+            <h2>Explora el museo</h2>
+            <form id="formulario-filtros">
+                <label for="artista">Artista</label>
+
+                <input type="search" id="artista" name="artista" placeholder="Nombre del artista">
+
+                <label for="coleccion">Colección</label>
+
+                <input type="search" id="coleccion" name="coleccion" placeholder="Nombre de la colección">
+
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="cargando" role="status" hidden>
+                <span class="loader" aria-hidden="true"></span>
+                <p>Cargando obras…</p>
+            </div>
+            <div id="galeria"></div>
+            <div id="paginacion" hidden>
+                <button id="anterior" disabled>Anterior</button>
+                <span id="numero-pagina"></span>
+                <button id="siguiente">Siguiente</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>® MAM — Museo de Arte Mutable · 2026</p>
+    </footer>
+</body>
+
+</html>

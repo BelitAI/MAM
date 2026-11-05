@@ -32,9 +32,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+    scroll-padding-top: 180px;
+}
+
 /* Cabecera y navegación */
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-superficie);
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -67,119 +75,23 @@ nav a:hover {
     color: var(--color-acento);
 }
 
-/* Portada*/
 
-.hero {
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
+/* Contenido de las galerías */
+
+main>section:not(.hero) {
+    max-width: 1400px;
+    margin: 0 auto;
     padding: 48px 24px;
-    overflow: hidden;
 }
 
-.hero-contenido {
-    width: 100%;
-}
-
-.hero-etiqueta {
-    color: var(--color-acento);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-/* Contenedor para el arte generativo */
-
-.hero-arte {
-    width: 100%;
-    min-width: 0;
-    margin: 24px 0;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Canvas de p5.js */
-
-.hero-arte canvas {
-    display: block;
-    max-width: 100%;
-}
-
-.hero-subtitulo {
-    font-size: clamp(32px, 5vw, 72px);
-    font-weight: 800;
-    line-height: 1;
-    margin-top: -60px;
-    margin-bottom: 32px;
-}
-
-.hero-frase {
-    font-size: 16px;
-    line-height: 1.6;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 40px;
-}
-
-.hero-boton {
-    display: inline-block;
-    padding: 18px 28px;
-    color: var(--color-acento);
-    border: 1px solid var(--color-acento);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-}
-
-.hero-boton:hover {
-    background-color: var(--color-acento);
-    color: var(--color-fondo);
-}
-
-/* Galería de obras*/
-
-#galeria {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-/* Tarjetas de las obras */
-
-.tarjeta-obra {
-    width: 100%;
-}
-
-/* Imágenes */
-
-.tarjeta-obra img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-/* Botón para guardar las obras en favoritos */
-
-.boton-favorito {
-    background: transparent;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-}
-
-.boton-favorito img {
-    display: block;
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
+main>section:not(.hero)>h2 {
+    margin: 0 0 32px;
+    font-size: clamp(28px, 4vw, 48px);
 }
 
 /* Pantallas grandes */
 
 @media (min-width: 768px) {
-
     header {
         flex-direction: row;
         justify-content: space-between;
@@ -187,60 +99,21 @@ nav a:hover {
         padding: 24px 48px;
     }
 
-    #galeria {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .hero {
-        padding: 80px 5%;
-    }
-
-    .hero-contenido {
-        max-width: 1400px;
+    html {
+        scroll-padding-top: 180px;
     }
 
 }
 
-#anterior:disabled,
-#siguiente:disabled {
-    background-color: var(--color-fondo);
-    color: var(--color-gris);
-    border: 1px solid var(--color-gris);
-    opacity: 1;
-    cursor: not-allowed;
-}
-
-/* Composición visual de la portada */
-
-/* Mobile First */
-.portada-visual {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    width: 100%;
-}
-
-.hero-arte {
-    min-width: 0;
-}
-
-.obra-portada {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-}
-
-.obra-portada iframe {
+.logo {
     display: block;
-    width: 150%;
-    height: 100%;
-    border: none;
+    width: 60px;
+    height: auto;
 }
 
-/* Escritorio */
-@media (min-width: 900px) {
-
-    .portada-visual {
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        align-items: center;
-    }
+/* Ajusta el lienzo del estudio al ancho disponible */
+#lienzo-estudio canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }

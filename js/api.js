@@ -66,8 +66,9 @@ export async function obtenerObras(limit = 12, offset = 0, artista = "") {
 */
 
 import { Obra } from "../clases/Obra.js";
-export async function obtenerObras(limit = 12, offset = 0, artista = "") {
+export async function obtenerObras(limit = 12, offset = 0, artista = "", coleccion = "") {
     const filtroArtista = JSON.stringify("%" + artista + "%");
+    const filtroColeccion = JSON.stringify("%" + coleccion + "%");
     const API_URL = "https://data.artblocks.io/v1/graphql";
 
     const consulta = `{ 
@@ -77,6 +78,7 @@ export async function obtenerObras(limit = 12, offset = 0, artista = "") {
                 project: {
     is_artblocks: {_eq: true}
     artist_name: {_ilike: ${filtroArtista}}
+    name: {_ilike: ${filtroColeccion}}
 }
                 media_url: {_is_null: false}
                 live_view_url: {_is_null: false}
@@ -101,6 +103,7 @@ export async function obtenerObras(limit = 12, offset = 0, artista = "") {
                 project: {
     is_artblocks: {_eq: true}
     artist_name: {_ilike: ${filtroArtista}}
+    name: {_ilike: ${filtroColeccion}}
 }
                 media_url: {_is_null: false}
                 live_view_url: {_is_null: false}

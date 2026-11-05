@@ -1,0 +1,129 @@
+/* Espacio y distribución de la sección de portada */
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 48px 24px;
+    overflow: hidden;
+}
+
+/* El contenido ocupa todo el ancho disponible */
+.hero-contenido {
+    width: 100%;
+}
+
+/* Texto amarillo que presenta el museo */
+.hero-etiqueta {
+    color: var(--color-acento);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Contenedor para el arte generativo */
+
+.hero-arte {
+    width: 100%;
+    min-width: 0;
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Tamaño y separación del título Museo de Arte Mutable */
+.hero-subtitulo {
+    font-size: clamp(32px, 5vw, 72px);
+    font-weight: 800;
+    line-height: 1;
+    margin-top: -60px;
+    margin-bottom: 32px;
+}
+
+/* Aspecto y separación del lema del museo */
+.hero-frase {
+    font-size: 16px;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+/* Aspecto del enlace Explorar el museo */
+.hero-boton {
+    display: inline-block;
+    padding: 18px 28px;
+    color: var(--color-acento);
+    border: 1px solid var(--color-acento);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Colores del botón al pasar el ratón */
+.hero-boton:hover {
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+}
+
+/* Ajusta el lienzo de MAM al ancho disponible */
+
+.hero-arte canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Coloca las dos animaciones en una columna por defecto */
+.portada-visual {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+}
+
+/* Ancho y proporción inicial del contenedor de la obra */
+.obra-portada {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+/* Tamaño del marco que muestra la obra de Art Blocks */
+.obra-portada iframe {
+    display: block;
+    width: 150%;
+    height: 100%;
+    border: none;
+}
+
+/* Ajustes para pantallas de al menos 768 píxeles */
+
+@media (min-width: 768px) {
+    /* Aumenta el espacio interior de la portada */
+    .hero {
+        padding: 80px 5%;
+    }
+
+    /* Limita el ancho del contenido */
+    .hero-contenido {
+        max-width: 1400px;
+    }
+}
+
+/* Ajustes para pantallas de al menos 900 píxeles */
+@media (min-width: 900px) {
+
+    /* Coloca las animaciones en dos columnas de distinto ancho */
+    .portada-visual {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        align-items: center;
+    }
+}
+
+/* Fija la altura de la obra y sustituye la proporción anterior */
+.obra-portada {
+    height: 320px;
+    aspect-ratio: auto;
+}

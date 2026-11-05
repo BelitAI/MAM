@@ -1,0 +1,127 @@
+/* Formulario de búsqueda */
+
+#formulario-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+#formulario-filtros input {
+    min-width: 0;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-gris);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font: inherit;
+}
+
+#formulario-filtros input:focus {
+    outline: 2px solid white;
+}
+
+#formulario-filtros button {
+    padding: 12px 24px;
+    border: 1px solid var(--color-acento);
+    background-color: transparent;
+    color: var(--color-acento);
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#formulario-filtros button:hover {
+    background-color: var(--color-acento);
+    color: var(--color-fondo);
+}
+
+/* Organiza las tarjetas en una columna y deja espacio entre ellas */
+
+#galeria {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Ancho de cada tarjeta y línea de separación inferior */
+
+.tarjeta-obra {
+    width: 100%;
+    min-width: 0;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-superficie);
+}
+
+/* Muestra la obra completa dentro de un espacio cuadrado */
+.tarjeta-obra>img {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: var(--color-fondo);
+}
+
+/* Tamaño y márgenes del título de la obra */
+.tarjeta-obra h3 {
+    margin: 20px 0 8px;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+/* Color y margen inferior del nombre del artista */
+.tarjeta-obra p {
+    margin: 0 0 16px;
+    color: var(--color-gris);
+}
+
+/* Color del enlace y separación de su subrayado */
+.tarjeta-obra a {
+    color: var(--color-acento);
+    text-underline-offset: 4px;
+}
+
+/* Ajusta las imágenes al ancho de la tarjeta sin deformarlas */
+
+.tarjeta-obra img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Quita el fondo y el borde del botón del corazón */
+
+.boton-favorito {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Fija el tamaño del icono del corazón en 28 píxeles */
+.boton-favorito img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+/* En pantallas grandes, ajusta los campos y muestra tres columnas */
+@media (min-width: 768px) {
+    #formulario-filtros input {
+        width: 220px;
+    }
+
+    #galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mantiene legibles los botones desactivados */
+#anterior:disabled,
+#siguiente:disabled {
+    background-color: var(--color-fondo);
+    color: var(--color-gris);
+    border: 1px solid var(--color-gris);
+    opacity: 1;
+    cursor: not-allowed;
+}
